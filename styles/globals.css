@@ -19,4 +19,13 @@
     @apply cursor-pointer hover:bg-opacity-10 flex
     items-center justify-center rounded-full transition ease-out;
   }
+  .form-control{
+    @apply space-y-2 flex flex-col mb-2;
+  }
+  .login-btn{
+    @apply bg-slate-200 text-black font-extrabold flex items-center justify-center min-w-full py-1 my-2;
+  }
+  .checkbox-container{
+    @apply flex space-x-3 text-sm;
+  }
 }
