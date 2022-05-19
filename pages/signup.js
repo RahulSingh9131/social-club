@@ -59,7 +59,7 @@ function signup() {
                             <input type="checkbox" id="remember"/>
                             <label htmlFor="remember">Remember me</label>
                         </div>
-                        <a href="#">Forgot Password?</a>
+                        <Link href="#">Forgot Password?</Link>
                     </div>
                     <button className="login-btn">SignUp</button>
                     <small className="flex items-center justify-between">
