@@ -21,3 +21,7 @@ export default function Home() {
     </div>
   )
 }
+
+export async function setServerSideProps(){
+  
+}

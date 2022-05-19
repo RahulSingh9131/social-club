@@ -11,6 +11,8 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import { useAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router';
 
 function PostInput() {
     const [inputValue,setInputValue]=useState("");
@@ -18,6 +20,9 @@ function PostInput() {
     const [showEmoji,setShowEmoji]=useState(false);
     const [loading,setLoading]=useState(false);
     const filePickerRef=useRef(null);
+
+    const {user,logout}=useAuth();
+    const router= useRouter();
 
     const addImageToPost=(e)=>{
         const reader= new FileReader();
@@ -60,6 +65,7 @@ function PostInput() {
             src="https://pngset.com/images/lion-svg-clip-arts-lion-head-silhouette-symbol-logo-trademark-graphics-transparent-png-41159.png"
             alt="userImage"
             className='h-11 w-11 rounded-full cursor-pointer'
+            onClick={()=>{logout(); router.push("/login");}}
         />
         <div className='w-full divide-y divide-gray-700'>
             <div className={`${selectedFile && "pb-7"} ${inputValue && "space-y-3"}`}>
