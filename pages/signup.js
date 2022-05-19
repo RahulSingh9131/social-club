@@ -22,8 +22,6 @@ function signup() {
         }catch(err){
             console.log("signup error",err)
         }
-
-        console.log(data);
     }
 
 

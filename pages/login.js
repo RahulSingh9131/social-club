@@ -64,7 +64,7 @@ function login() {
                             <input type="checkbox" id="remember"/>
                             <label htmlFor="remember">Remember me</label>
                         </div>
-                        <a href="#">Forgot Password?</a>
+                        <Link href="#">Forgot Password?</Link>
                     </div>
                     <button className="login-btn">LogIn</button>
                     <button className="login-btn" onClick={()=>testCredits()}>LogIn with test credits</button>
