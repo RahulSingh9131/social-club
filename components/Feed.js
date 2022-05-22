@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import PostInput from './PostInput';
 import { db } from '../firebase';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import Post from './Post';
+import { signOut } from 'next-auth/react';
 
 function Feed() {
 
@@ -28,8 +29,9 @@ function Feed() {
        <div className='text-[#d9d9d9] flex items-center sm:justify-between
         py-2 px-3 sticky top-0 z-30 bg-black border-b border-gray-700'>
             <h2 className='text-lg sm:text-xl font-bold'>Home</h2>
-            <div className='hoverAnimation flex items-center justify-center w-9 h-9 xl:px-0 ml-auto'>
-                <StarBorderOutlinedIcon/>
+            <div className='hoverAnimation flex items-center justify-center w-9 h-9 xl:px-0 ml-auto'
+            onClick={signOut}>
+                <LogoutIcon/>
             </div>
        </div>
        <PostInput/>

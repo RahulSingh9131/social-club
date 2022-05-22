@@ -3,10 +3,14 @@ import Feed from '../components/Feed'
 import LandingPage from '../components/LandingPage';
 import Sidebar from '../components/sidebar'
 import { useAuth } from '../context/AuthContext';
+import { getProviders, getSession, useSession } from "next-auth/react";
 
-export default function Home() {
+export default function Home({providers}) {
   const {user}=useAuth();
-  if(!user) return <LandingPage/>
+
+  const { data: session } = useSession()
+
+  if(!session) return <LandingPage providers={providers}/>
   return (
     <div className="">
       <Head>
@@ -25,6 +29,14 @@ export default function Home() {
   )
 }
 
-export async function setServerSideProps(){
-  
+export async function getServerSideProps(context){
+  const providers= await getProviders();
+  const session = await getSession(context);
+
+  return {
+    props:{
+      providers,
+      session,
+    }
+  }
 }
