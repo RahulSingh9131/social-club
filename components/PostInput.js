@@ -22,6 +22,7 @@ function PostInput() {
     const filePickerRef=useRef(null);
 
     const {user,logout}=useAuth();
+    console.log(user);
     const router= useRouter();
 
     const addImageToPost=(e)=>{
@@ -39,6 +40,8 @@ function PostInput() {
         if(loading) return;
         setLoading(true);
         const docRef= await addDoc(collection(db,'posts'),{
+            id: user.uid,
+            username:user.displayName,
             text: inputValue,
             timestamp: serverTimestamp(),
         });
@@ -65,7 +68,7 @@ function PostInput() {
             src="https://pngset.com/images/lion-svg-clip-arts-lion-head-silhouette-symbol-logo-trademark-graphics-transparent-png-41159.png"
             alt="userImage"
             className='h-11 w-11 rounded-full cursor-pointer'
-            onClick={()=>{logout(); router.push("/login");}}
+            onClick={()=>{logout(); router.push("/");}}
         />
         <div className='w-full divide-y divide-gray-700'>
             <div className={`${selectedFile && "pb-7"} ${inputValue && "space-y-3"}`}>
