@@ -13,6 +13,7 @@ import {
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 function PostInput() {
     const [inputValue,setInputValue]=useState("");
@@ -22,8 +23,9 @@ function PostInput() {
     const filePickerRef=useRef(null);
 
     const {user,logout}=useAuth();
-    console.log(user);
     const router= useRouter();
+
+    const {data: session}=useSession();
 
     const addImageToPost=(e)=>{
         const reader= new FileReader();
@@ -40,8 +42,10 @@ function PostInput() {
         if(loading) return;
         setLoading(true);
         const docRef= await addDoc(collection(db,'posts'),{
-            id: user.uid,
-            username:user.displayName,
+            id:session.user.uid,
+            username:session.user.name,
+            userImg:session.user.image,
+            tag:session.user.tag,
             text: inputValue,
             timestamp: serverTimestamp(),
         });
@@ -65,7 +69,7 @@ function PostInput() {
   return (
     <div className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll ${loading && "opacity-70"}`}>
         <img 
-            src="https://pngset.com/images/lion-svg-clip-arts-lion-head-silhouette-symbol-logo-trademark-graphics-transparent-png-41159.png"
+            src={session?.user?.image}
             alt="userImage"
             className='h-11 w-11 rounded-full cursor-pointer'
             onClick={()=>{logout(); router.push("/");}}
