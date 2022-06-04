@@ -22,7 +22,7 @@ function Feed() {
       unsubscribe();
     }
   },[db]);
-
+  
   return (
     <div className='text-white flex-grow border-l border-r border-gray-700
     max-w-2xl sm:ml-[73px] xl:ml-[360px] '>
