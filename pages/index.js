@@ -2,11 +2,15 @@ import Head from 'next/head'
 import Feed from '../components/Feed'
 import LandingPage from '../components/LandingPage';
 import Sidebar from '../components/sidebar'
+import CommentModal from '../components/CommentModal';
 import { useAuth } from '../context/AuthContext';
 import { getProviders, getSession, useSession } from "next-auth/react";
+import { useSelector } from 'react-redux';
 
 export default function Home({providers}) {
   const {user}=useAuth();
+  const {isModalOpen}=useSelector((store)=>store.post);
+
 
   const { data: session } = useSession()
 
@@ -22,8 +26,7 @@ export default function Home({providers}) {
         <Sidebar/>
         <Feed/>
         {/* widgets */}
-
-        {/* Modal */}
+        {isModalOpen && <CommentModal/>}
       </main>
     </div>
   )
