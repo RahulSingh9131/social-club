@@ -36,9 +36,6 @@ function SinglePostpage({providers}) {
       (snapshot)=>setComments(snapshot.docs))
     },[db,id])
 
-    console.log(comments);
-
-    console.log(id);
   return (
     <div className="">
     <Head>
