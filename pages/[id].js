@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import CommentModal from '../components/CommentModal'
-import Sidebar from '../components/sidebar'
+import Sidebar from '../components/Sidebar'
 import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/router'

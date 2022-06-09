@@ -3,7 +3,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Image from 'next/image';
 import Head from 'next/head';
-import Sidebar from '../components/sidebar';
+import Sidebar from '../components/Sidebar';
 import LandingPage from '../components/LandingPage';
 import BookmarkPost from '../components/BookmarkPost';
 import brandLogo from "../Assests/brand-logo.png";
