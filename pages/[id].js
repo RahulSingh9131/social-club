@@ -23,14 +23,14 @@ function SinglePostpage({providers}) {
     const router=useRouter();
     const {id}=router.query;
 
-   if(!session) return <LandingPage providers={providers}/>
+ 
 
   useEffect(
     () =>
       onSnapshot(doc(db, "posts", id), (snapshot) => {
         setPost(snapshot.data());
       }),
-    [db]
+    [id]
   );
 
   useEffect(
@@ -42,9 +42,11 @@ function SinglePostpage({providers}) {
         ),
         (snapshot) => setComments(snapshot.docs)
       ),
-    [db, id]
+    [id]
   );
-  
+
+  if(!session) return <LandingPage providers={providers}/>
+
   return (
     <div className="">
     <Head>

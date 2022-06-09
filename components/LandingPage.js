@@ -17,6 +17,7 @@ function LandingPage({providers}) {
           width={200}
           height={200}
           className="contain"
+          alt="brandlogo"
           />
           <h1 className='text-lg font-medium md:text-3xl'>welcome to <span className='text-yellow-300 text-xl md:text-5xl'>Social club</span></h1>
           <p className='max-w-[400px]'>

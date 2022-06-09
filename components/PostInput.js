@@ -15,6 +15,7 @@ import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 function PostInput() {
     const [inputValue,setInputValue]=useState("");
@@ -70,7 +71,7 @@ function PostInput() {
 
   return (
     <div className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll ${loading && "opacity-70"}`}>
-        <img 
+        <Image 
             src={session?.user?.image}
             alt="userImage"
             className='h-11 w-11 rounded-full cursor-pointer'
@@ -94,7 +95,7 @@ function PostInput() {
                     left-1 cursor-pointer' onClick={()=>setSelectedFile(null)}>
                         <CloseIcon/>
                     </div>
-                    <img 
+                    <Image 
                         src={selectedFile}
                         alt="selected-file"
                         className="max-h-70 rounded-2xl object-contain"

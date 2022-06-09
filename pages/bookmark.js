@@ -12,7 +12,7 @@ import { getProviders, getSession, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 
-function bookmark({providers}) {
+function Bookmark({providers}) {
   const {bookmark}=useSelector((store)=>store.bookmark);
   const router=useRouter();
   const { data: session } = useSession();
@@ -56,6 +56,7 @@ function bookmark({providers}) {
                       width={200}
                       height={200}
                       className="contain"
+                      alt="brandlogo"
                     />
                     <h1 className='text-[#d9d9d9] font-semibold text-lg'>
                       You have not bookmarked any post yet.
@@ -69,7 +70,7 @@ function bookmark({providers}) {
   )
 }
 
-export default bookmark
+export default Bookmark
 
 export async function getServerSideProps(context){
   const providers= await getProviders();

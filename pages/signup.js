@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React,{useState} from 'react'
 import { useAuth } from '../context/AuthContext'
 
-function signup() {
+function Signup() {
 
     const router = useRouter();
 
@@ -64,7 +64,7 @@ function signup() {
                     <button className="login-btn">SignUp</button>
                     <small className="flex items-center justify-between">
                         <span>Already have an account</span>
-                        <span className='hover:underline'><Link href="/login">login</Link></span>
+                        <span className='hover:underline'><Link href="/Login">login</Link></span>
                     </small>
                 </form>
             </div>
@@ -73,4 +73,4 @@ function signup() {
   )
 }
 
-export default signup
+export default Signup
