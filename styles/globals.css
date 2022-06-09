@@ -32,4 +32,8 @@
     @apply inline-block align-bottom bg-black rounded-2xl text-left overflow-hidden shadow-xl transform
      transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full;
   }
+  .sidebar-link{
+    @apply text-[#d9d9d9] flex items-center justify-center
+    xl:justify-start text-xl space-x-4 hoverAnimation  font-bold;
+  }
 }

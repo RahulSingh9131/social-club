@@ -5,10 +5,12 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Moment from 'react-moment';
 import { useSelector,useDispatch } from 'react-redux';
 import {setIsModalOpen,setPostId} from "../features/postSlice";
+import { savePost,removePost } from '../features/bookmarkSlice';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
@@ -21,6 +23,7 @@ function Post({id,post,postPage}) {
     const [liked,setLiked]=useState(false);
 
     const {postId,isModalOpen}=useSelector((store)=>store.post);
+    const {bookmark}=useSelector((store)=>store.bookmark);
     const {data: session}=useSession();
     const dispatch=useDispatch();
     const router=useRouter();
@@ -158,9 +161,17 @@ function Post({id,post,postPage}) {
                         </div>
                     </div>
                 )}
-              
-                <div className='hover:text-purple-500'>
-                    <BookmarkBorderIcon/>
+                <div className='flex items-center group'
+                onClick={(e)=>{
+                    e.stopPropagation();
+                }}>
+                    <div >
+                        {bookmark.some((c)=>c._id===post?._id) ? (
+                            <BookmarkIcon className='text-purple-500' onClick={()=>dispatch(removePost(post?._id))}/>
+                        ):(
+                            <BookmarkBorderIcon className='hover:text-purple-500' onClick={()=>dispatch(savePost(post))}/>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
