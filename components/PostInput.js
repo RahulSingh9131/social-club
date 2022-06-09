@@ -1,4 +1,5 @@
 import React,{useRef, useState} from 'react'
+import { v4 as uuid } from "uuid";
 import CloseIcon from '@mui/icons-material/Close';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import InsertEmoticonOutlinedIcon from '@mui/icons-material/InsertEmoticonOutlined';
@@ -43,6 +44,7 @@ function PostInput() {
         setLoading(true);
         const docRef= await addDoc(collection(db,'posts'),{
             id:session.user.uid,
+            _id:uuid(),
             username:session.user.name,
             userImg:session.user.image,
             tag:session.user.tag,

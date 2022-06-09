@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image"
 import brandLogo from "../Assests/brand-logo.png"
-import SidebarLink from './SidebarLink'
+// import SidebarLink from './SidebarLink'
 import HomeIcon from '@mui/icons-material/Home';
 import TagOutlinedIcon from '@mui/icons-material/TagOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -10,10 +10,12 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 function Sidebar() {
 
   const { data: session } = useSession();
+  const router=useRouter();
 
   return (
     <div className='hidden sm:flex flex-col items-center xl:items-start xl:w-[340px] p-2 fixed h-full'>
@@ -25,13 +27,30 @@ function Sidebar() {
             className="bg-inherit"/>
         </div>
         <div className='space-y-3 mt-4 mb-2.5 xl:ml-24'>
-            <SidebarLink text="Home" Icon={HomeIcon} active/>
-            <SidebarLink text="Explore" Icon={TagOutlinedIcon}/>
-            <SidebarLink text="Notification" Icon={NotificationsOutlinedIcon}/>
-            <SidebarLink text="Messages" Icon={MailOutlinedIcon}/>
-            <SidebarLink text="Bookmarks" Icon={ BookmarkBorderOutlinedIcon}/>
-            <SidebarLink text="Profile" Icon={ PersonOutlinedIcon}/>
-            <SidebarLink text="More" Icon={MoreHorizOutlinedIcon}/>
+          <div className={`sidebar-link`} onClick={()=>router.push("/")}>
+              <HomeIcon className="h-7 text-white"/>
+              <span className='hidden xl:inline'>Home</span>
+          </div>
+          <div className={`sidebar-link`}>
+                <PersonOutlinedIcon className="h-7 text-white"/>
+                <span className='hidden xl:inline'>Profile</span>
+          </div>
+          <div className={`sidebar-link`} onClick={()=>router.push("/bookmark")}>
+                <BookmarkBorderOutlinedIcon className="h-7 text-white"/>
+                <span className='hidden xl:inline'>Bookmark</span>
+          </div>
+          <div className={`sidebar-link`}>
+                <TagOutlinedIcon className="h-7 text-white"/>
+                <span className='hidden xl:inline'>Explore</span>
+          </div>
+          <div className={`sidebar-link`}>
+                <NotificationsOutlinedIcon className="h-7 text-white"/>
+                <span className='hidden xl:inline'>Notification</span>
+          </div>
+          <div className={`sidebar-link`}>
+              <MailOutlinedIcon className="h-7 text-white"/>
+              <span className='hidden xl:inline'>Messages</span>
+          </div>
         </div>
         <div className='text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto xl:-mr-5 mt-auto'>
           <img 
