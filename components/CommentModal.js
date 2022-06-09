@@ -17,11 +17,13 @@ function CommentModal() {
     const [post,setPost]=useState();
     const [comment,setComment]=useState("");
 
-    useEffect(()=>{
-        onSnapshot(doc(db,"posts",postId),(snapshot)=>{
+    useEffect(
+        () =>
+          onSnapshot(doc(db, "posts", postId), (snapshot) => {
             setPost(snapshot.data());
-        })
-    },[db])
+          }),
+        [db]
+      );
 
     const sendComment= async (e)=>{
         e.preventDefault()

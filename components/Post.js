@@ -41,14 +41,21 @@ function Post({id,post,postPage}) {
         }
       },[db,id]);
 
-    useEffect(()=>{
-        onSnapshot(collection(db,"posts",id,"likes"),
-        (snapshot)=>setLikes(snapshot.docs))
-    },[db,id])
+      useEffect(
+        () =>
+          onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
+            setLikes(snapshot.docs)
+          ),
+        [db, id]
+      );
 
-    useEffect(()=>{
-        setLiked(likes.findIndex((like)=>like.id===session?.user?.uid)!==-1)
-    },[likes])
+      useEffect(
+        () =>
+          setLiked(
+            likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+          ),
+        [likes]
+      );
 
     const likePost= async ()=>{
         if(liked){
