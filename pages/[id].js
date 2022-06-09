@@ -25,18 +25,26 @@ function SinglePostpage({providers}) {
 
    if(!session) return <LandingPage providers={providers}/>
 
+  useEffect(
+    () =>
+      onSnapshot(doc(db, "posts", id), (snapshot) => {
+        setPost(snapshot.data());
+      }),
+    [db]
+  );
 
-    useEffect(()=>{
-        onSnapshot(doc(db,"posts",id),(snapshot)=>{
-            setPost(snapshot.data());
-        })
-    },[db])
-
-    useEffect(()=>{
-      onSnapshot(query(collection(db,"posts",id,"comments"),orderBy("timestamp","desc")),
-      (snapshot)=>setComments(snapshot.docs))
-    },[db,id])
-
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, "posts", id, "comments"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setComments(snapshot.docs)
+      ),
+    [db, id]
+  );
+  
   return (
     <div className="">
     <Head>
