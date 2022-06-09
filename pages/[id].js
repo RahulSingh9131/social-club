@@ -12,6 +12,7 @@ import { collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
 import Post from '../components/Post';
 import Comment from '../components/Comment';
+import LandingPage from '../components/LandingPage';
 
 
 function SinglePostpage({providers}) {
