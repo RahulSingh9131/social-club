@@ -75,6 +75,8 @@ function Post({id,post,postPage}) {
                 src={post?.userImg}
                 className='h-11 w-11 rounded-full mr-4'
                 alt="profile-pic"
+                width={100}
+                height={100}
             />
         )}
         <div className='flex flex-col space-y-2 w-full'>
@@ -84,6 +86,8 @@ function Post({id,post,postPage}) {
                         src={post?.userImg}
                         className='h-11 w-11 rounded-full mr-4'
                         alt="profile-pic"
+                        width={100}
+                        height={100}
                     />
                 )}
                 <div className='text-[#6e767d]'>
@@ -116,6 +120,9 @@ function Post({id,post,postPage}) {
                 src={post?.image}
                 className="rounded-2xl max-h-[700px] object-contain mr-2"
                 alt="post-image"
+                width={200}
+                height={300}
+                priority
             />
             <div className={`text-[#6e767d] flex justify-between w-10/12 ${postPage && "mx-auto"}`}>
                 <div className='flex items-center space-x-1 group'

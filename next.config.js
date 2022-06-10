@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // images: {
-  //   domains: ['w7.pngwing.com']
-  // },
+  images: {
+    domains: ['lh3.googleusercontent.com','firebasestorage.googleapis.com']
+  },
 }
 
 module.exports = nextConfig

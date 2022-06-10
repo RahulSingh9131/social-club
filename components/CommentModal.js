@@ -76,7 +76,7 @@ function CommentModal() {
                         <div className="w-full">
                             <div className="text-[#6e767d] flex gap-x-3 relative">
                                 <span className="w-0.5 h-full z-[-1] absolute left-5 top-11 bg-gray-600"/>
-                                <Image src={post?.userImg} alt="profile-pic" className="h-11 w-11 rounded-full"/>
+                                <Image src={post?.userImg} alt="profile-pic" className="h-11 w-11 rounded-full" width={100} height={100}/>
                                 <div>
                                     <div className="inline-block group">
                                         <h4 className="font-bold text-[15px] sm:text-base text-[#d9d9d9]
@@ -95,9 +95,11 @@ function CommentModal() {
                             </div>
                             <div className="flex mt-7 space-x-3 w-full">
                                 <Image
+                                    src={session?.user?.image}
                                     className="h-11 w-11 rounded-full"
-                                    src={session.user.image}
                                     alt="userImage"
+                                    width={100}
+                                    height={100}
                                 />
                                 <div className="flex-grow mt-2">
                                     <textarea

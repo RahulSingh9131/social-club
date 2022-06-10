@@ -74,6 +74,8 @@ function PostInput() {
         <Image 
             src={session?.user?.image}
             alt="userImage"
+            width="40"
+            height="40"
             className='h-11 w-11 rounded-full cursor-pointer'
             onClick={()=>{logout(); router.push("/");}}
         />
@@ -95,7 +97,7 @@ function PostInput() {
                     left-1 cursor-pointer' onClick={()=>setSelectedFile(null)}>
                         <CloseIcon/>
                     </div>
-                    <Image 
+                    <img 
                         src={selectedFile}
                         alt="selected-file"
                         className="max-h-70 rounded-2xl object-contain"
