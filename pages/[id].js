@@ -70,7 +70,7 @@ function SinglePostpage({providers}) {
                     <LogoutIcon/>
                 </div>
             </div>
-            <Post id={id} post={post} postPage={postPage}/>
+            <Post id={id} post={post} postPage/>
             {comments.length >0 && (
               <div className='pb-72'>
                 {comments.map((comment)=>(
