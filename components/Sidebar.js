@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from "next/image"
 import brandLogo from "../Assests/brand-logo.png"
-// import SidebarLink from './SidebarLink'
 import HomeIcon from '@mui/icons-material/Home';
 import TagOutlinedIcon from '@mui/icons-material/TagOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -37,7 +36,7 @@ function Sidebar() {
                 <PersonOutlinedIcon className="h-7 text-white"/>
                 <span className='hidden xl:inline'>Profile</span>
           </div>
-          <div className={`sidebar-link`} onClick={()=>router.push("/bookmark")}>
+          <div className={`sidebar-link`} onClick={()=>router.push("/Bookmark")}>
                 <BookmarkBorderOutlinedIcon className="h-7 text-white"/>
                 <span className='hidden xl:inline'>Bookmark</span>
           </div>
