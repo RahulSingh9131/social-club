@@ -15,6 +15,8 @@ function BookmarkPost({_id,post,postPage}) {
                 src={post?.userImg}
                 className='h-11 w-11 rounded-full mr-4'
                 alt="profile-pic"
+                width={50}
+                height={50}
             />
         )}
         <div className='flex flex-col space-y-2 w-full'>
@@ -24,6 +26,8 @@ function BookmarkPost({_id,post,postPage}) {
                         src={post?.userImg}
                         className='h-11 w-11 rounded-full mr-4'
                         alt="profile-pic"
+                        width={50}
+                        height={50}
                     />
                 )}
                 <div className='text-[#6e767d]'>
@@ -59,6 +63,8 @@ function BookmarkPost({_id,post,postPage}) {
                 src={post?.image}
                 className="rounded-2xl max-h-[700px] object-contain mr-2"
                 alt="postImage"
+                width={400}
+                height={300}
             />
         </div>
     </div>

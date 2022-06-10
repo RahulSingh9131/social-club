@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 function Sidebar() {
 
   const { data: session } = useSession();
+  console.log(session?.user?.image);
   const router=useRouter();
 
   return (
@@ -53,11 +54,13 @@ function Sidebar() {
               <span className='hidden xl:inline'>Messages</span>
           </div>
         </div>
-        <div className='text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto xl:-mr-5 mt-auto'>
+        <div className='text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto xl:-mr-2 mt-auto space-x-1'>
           <Image 
             src={session?.user?.image}
             alt="userImage"
             className='h-10 w-10 rounded-full xl:mr-2.5'
+            width={50}
+            height={50}
           />
           <div className='hidden xl:inline leading-5'>
             <h4 className='font-bold'>{session?.user?.name}</h4>

@@ -9,6 +9,8 @@ function Comment({id,comment}) {
             src={comment?.userImg}
             alt="user-img"
             className='h-11 w-11 rounded-full mr-4'
+            width={50}
+            height={50}
         />
         <div className='flex flex-col space-y-2 w-full'>
             <div className='flex justify-between'>
