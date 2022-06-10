@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { removePost } from '../features/bookmarkSlice';
 import { useDispatch } from 'react-redux';
+import Image from 'next/image';
 
 function BookmarkPost({_id,post,postPage}) {
     const dispatch=useDispatch();
@@ -10,7 +11,7 @@ function BookmarkPost({_id,post,postPage}) {
   return (
     <div className='p-3 flex cursor-pointer border-b border-gray-700'>
         {!postPage && (
-            <img 
+            <Image 
                 src={post?.userImg}
                 className='h-11 w-11 rounded-full mr-4'
                 alt="profile-pic"
@@ -19,7 +20,7 @@ function BookmarkPost({_id,post,postPage}) {
         <div className='flex flex-col space-y-2 w-full'>
             <div className={`flex ${!postPage && "justify-between"}`}>
                 {postPage && (
-                    <img
+                    <Image
                         src={post?.userImg}
                         className='h-11 w-11 rounded-full mr-4'
                         alt="profile-pic"
@@ -54,9 +55,10 @@ function BookmarkPost({_id,post,postPage}) {
                     {post?.text}
                 </p>
             )}
-            <img 
+            <Image 
                 src={post?.image}
                 className="rounded-2xl max-h-[700px] object-contain mr-2"
+                alt="postImage"
             />
         </div>
     </div>

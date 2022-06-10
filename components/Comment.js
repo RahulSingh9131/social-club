@@ -1,10 +1,11 @@
+import Image from 'next/image'
 import React from 'react'
 import Moment from 'react-moment'
 
 function Comment({id,comment}) {
   return (
     <div className='flex cursor-pointer p-3 border-b border-gray-700'>
-        <img 
+        <Image 
             src={comment?.userImg}
             alt="user-img"
             className='h-11 w-11 rounded-full mr-4'

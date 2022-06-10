@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from "next/image"
 import brandLogo from "../Assests/brand-logo.png"
-// import SidebarLink from './SidebarLink'
 import HomeIcon from '@mui/icons-material/Home';
 import TagOutlinedIcon from '@mui/icons-material/TagOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -21,10 +20,12 @@ function Sidebar() {
     <div className='hidden sm:flex flex-col items-center xl:items-start xl:w-[340px] p-2 fixed h-full'>
         <div className='flex items-center justify-center w-14 h-14 hoverAnimation p-0 xl:ml-24 bg-inherit'>
             <Image 
-            src={brandLogo}
-            width={100}
-            height={100}
-            className="bg-inherit"/>
+              src={brandLogo}
+              width={100}
+              height={100}
+              className="bg-inherit"
+              alt="brandlogo"
+            />
         </div>
         <div className='space-y-3 mt-4 mb-2.5 xl:ml-24'>
           <div className={`sidebar-link`} onClick={()=>router.push("/")}>
@@ -35,7 +36,7 @@ function Sidebar() {
                 <PersonOutlinedIcon className="h-7 text-white"/>
                 <span className='hidden xl:inline'>Profile</span>
           </div>
-          <div className={`sidebar-link`} onClick={()=>router.push("/bookmark")}>
+          <div className={`sidebar-link`} onClick={()=>router.push("/Bookmark")}>
                 <BookmarkBorderOutlinedIcon className="h-7 text-white"/>
                 <span className='hidden xl:inline'>Bookmark</span>
           </div>
@@ -53,10 +54,10 @@ function Sidebar() {
           </div>
         </div>
         <div className='text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto xl:-mr-5 mt-auto'>
-          <img 
-          src={session?.user?.image}
-          alt="userImage"
-          className='h-10 w-10 rounded-full xl:mr-2.5'
+          <Image 
+            src={session?.user?.image}
+            alt="userImage"
+            className='h-10 w-10 rounded-full xl:mr-2.5'
           />
           <div className='hidden xl:inline leading-5'>
             <h4 className='font-bold'>{session?.user?.name}</h4>

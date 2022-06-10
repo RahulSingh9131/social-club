@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Feed from '../components/Feed'
 import LandingPage from '../components/LandingPage';
-import Sidebar from '../components/sidebar'
+import Sidebar from '../components/Sidebar'
 import CommentModal from '../components/CommentModal';
 import { useAuth } from '../context/AuthContext';
 import { getProviders, getSession, useSession } from "next-auth/react";

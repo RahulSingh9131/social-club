@@ -15,6 +15,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import Image from 'next/image';
 
 
 function Post({id,post,postPage}) {
@@ -39,14 +40,14 @@ function Post({id,post,postPage}) {
         return ()=>{
           unsubscribe();
         }
-      },[db,id]);
+      },[id]);
 
       useEffect(
         () =>
           onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
             setLikes(snapshot.docs)
           ),
-        [db, id]
+        [id]
       );
 
       useEffect(
@@ -54,7 +55,7 @@ function Post({id,post,postPage}) {
           setLiked(
             likes.findIndex((like) => like.id === session?.user?.uid) !== -1
           ),
-        [likes]
+        [likes,session?.user?.uid]
       );
 
     const likePost= async ()=>{
@@ -70,7 +71,7 @@ function Post({id,post,postPage}) {
   return (
     <div className='p-3 flex cursor-pointer border-b border-gray-700' onClick={()=>router.push(`/${id}`)}>
         {!postPage && (
-            <img 
+            <Image 
                 src={post?.userImg}
                 className='h-11 w-11 rounded-full mr-4'
                 alt="profile-pic"
@@ -79,7 +80,7 @@ function Post({id,post,postPage}) {
         <div className='flex flex-col space-y-2 w-full'>
             <div className={`flex ${!postPage && "justify-between"}`}>
                 {postPage && (
-                    <img
+                    <Image
                         src={post?.userImg}
                         className='h-11 w-11 rounded-full mr-4'
                         alt="profile-pic"
@@ -111,9 +112,10 @@ function Post({id,post,postPage}) {
                     {post?.text}
                 </p>
             )}
-            <img 
+            <Image 
                 src={post?.image}
                 className="rounded-2xl max-h-[700px] object-contain mr-2"
+                alt="post-image"
             />
             <div className={`text-[#6e767d] flex justify-between w-10/12 ${postPage && "mx-auto"}`}>
                 <div className='flex items-center space-x-1 group'

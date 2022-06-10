@@ -8,6 +8,7 @@ import { addDoc, collection, doc, onSnapshot, serverTimestamp } from "firebase/f
 import { db } from "../firebase";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function CommentModal() {
     const {isModalOpen,postId}=useSelector((store)=>store.post);
@@ -22,7 +23,7 @@ function CommentModal() {
           onSnapshot(doc(db, "posts", postId), (snapshot) => {
             setPost(snapshot.data());
           }),
-        [db]
+        [postId]
       );
 
     const sendComment= async (e)=>{
@@ -75,7 +76,7 @@ function CommentModal() {
                         <div className="w-full">
                             <div className="text-[#6e767d] flex gap-x-3 relative">
                                 <span className="w-0.5 h-full z-[-1] absolute left-5 top-11 bg-gray-600"/>
-                                <img src={post?.userImg} alt="profile-pic" className="h-11 w-11 rounded-full"/>
+                                <Image src={post?.userImg} alt="profile-pic" className="h-11 w-11 rounded-full"/>
                                 <div>
                                     <div className="inline-block group">
                                         <h4 className="font-bold text-[15px] sm:text-base text-[#d9d9d9]
@@ -93,9 +94,10 @@ function CommentModal() {
                                 </div>
                             </div>
                             <div className="flex mt-7 space-x-3 w-full">
-                                <img 
+                                <Image
                                     className="h-11 w-11 rounded-full"
                                     src={session.user.image}
+                                    alt="userImage"
                                 />
                                 <div className="flex-grow mt-2">
                                     <textarea

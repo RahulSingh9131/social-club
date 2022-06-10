@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import CommentModal from '../components/CommentModal'
-import Sidebar from '../components/sidebar'
+import Sidebar from '../components/Sidebar'
 import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/router'
@@ -23,14 +23,14 @@ function SinglePostpage({providers}) {
     const router=useRouter();
     const {id}=router.query;
 
-   if(!session) return <LandingPage providers={providers}/>
+ 
 
   useEffect(
     () =>
       onSnapshot(doc(db, "posts", id), (snapshot) => {
         setPost(snapshot.data());
       }),
-    [db]
+    [id]
   );
 
   useEffect(
@@ -42,9 +42,11 @@ function SinglePostpage({providers}) {
         ),
         (snapshot) => setComments(snapshot.docs)
       ),
-    [db, id]
+    [id]
   );
-  
+
+  if(!session) return <LandingPage providers={providers}/>
+
   return (
     <div className="">
     <Head>

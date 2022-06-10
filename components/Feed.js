@@ -21,7 +21,7 @@ function Feed() {
     return ()=>{
       unsubscribe();
     }
-  },[db]);
+  },[]);
   
   return (
     <div className='text-white flex-grow border-l border-r border-gray-700
